@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Streaming\ValueObjects\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Spotify.Core\Spotify.Core.csproj" />
+    <Folder Include="Mappers\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>
