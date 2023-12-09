@@ -1,6 +1,8 @@
-﻿using Spotify.Core.Exceptions;
+﻿using Spotify.Application.Interfaces;
+using Spotify.Application.Users.Dtos;
+using Spotify.Core.Exceptions;
 using Spotify.Domain.Accounts.Aggregates;
-using Spotify.Infrastructure.Repository;
+using Spotify.Infrastructure.Interfaces;
 
 namespace Spotify.Application.Users;
 
@@ -46,5 +48,36 @@ public class UserService : IUserService
 
         UserRepository.CreateUser(user);
         return user;
+    }
+
+    public Playlist CreatePlaylist(Guid userId, PlaylistDto playlistDto)
+    {
+        var user = UserRepository.GetUserById(userId);
+
+        if (user == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "User not found",
+                ErrorName = nameof(CreatePlaylist)
+            }).ValidateAndThrow();
+        }
+
+        if (user.Playlists.Any(p => p.Name == playlistDto.Name))
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "User already has this playlist name, please choose another name",
+                ErrorName = nameof(CreatePlaylist)
+            }).ValidateAndThrow();
+        }
+
+        var playlist = new Playlist();
+
+        playlist.CreatePlaylist(playlistDto.Name, playlistDto.Visibility);
+
+        UserRepository.CreatePlaylist(user.Id, playlist);
+
+        return playlist;
     }
 }

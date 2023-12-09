@@ -1,4 +1,5 @@
 ﻿using Spotify.Domain.Accounts.Aggregates;
+using Spotify.Infrastructure.Interfaces;
 
 namespace Spotify.Infrastructure.Repository;
 public class UserRepository : IUserRepository
@@ -14,5 +15,11 @@ public class UserRepository : IUserRepository
     {
         user.Id = Guid.NewGuid();
         Users.Add(user);
+    }
+
+    public void CreatePlaylist(Guid userId, Playlist playlist)
+    {
+        var user = Users.FirstOrDefault(u => u.Id == userId);
+        user.Playlists.Add(playlist);
     }
 }

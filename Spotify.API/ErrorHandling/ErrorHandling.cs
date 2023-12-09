@@ -3,7 +3,7 @@
 public class ErrorHandling
 {
     public List<ErrorMessage> Messages { get; set; } = new List<ErrorMessage>();
-    public String ErrorDescription = "Aconteceram erros ao processar sua requisição";
+    public String ErrorDescription = "Errors occurred while processing your request";
 
     public class ErrorMessage
     {

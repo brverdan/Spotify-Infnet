@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Spotify.Application.Users;
+namespace Spotify.Application.Users.Dtos;
 
 public class CreateUserDto
 {

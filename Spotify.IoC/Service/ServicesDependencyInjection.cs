@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Spotify.Application.Interfaces;
 using Spotify.Application.Users;
 
 namespace Spotify.IoC.Service;

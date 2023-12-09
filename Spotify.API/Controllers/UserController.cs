@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Spotify.Application.Users;
+using Spotify.Application.Interfaces;
+using Spotify.Application.Users.Dtos;
 
 namespace Spotify.API.Controllers;
 
@@ -27,7 +28,7 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
-    [HttpPost("create")]
+    [HttpPost("createUser")]
     public IActionResult CreateUser([FromBody] CreateUserDto userCreateDto)
     {
         if(!ModelState.IsValid) 
@@ -36,6 +37,19 @@ public class UserController : ControllerBase
         }
 
         var result = UserService.CreateUser(userCreateDto);
+
+        return Created("", result);
+    }
+
+    [HttpPost("{id}/createplaylist")]
+    public IActionResult CreatePlaylist([FromRoute] Guid id, [FromBody] PlaylistDto playlistDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = UserService.CreatePlaylist(id, playlistDto);
 
         return Created("", result);
     }

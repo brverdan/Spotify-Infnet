@@ -1,4 +1,5 @@
 ﻿using Spotify.Domain.Streaming.Aggregates;
+using Spotify.Infrastructure.Interfaces;
 
 namespace Spotify.Infrastructure.Repository;
 public class PlanRepository : IPlanRepository
