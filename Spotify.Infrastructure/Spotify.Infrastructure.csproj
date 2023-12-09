@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Mappers\" />
-    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Spotify.Domain\Spotify.Domain.csproj" />
   </ItemGroup>
 
 </Project>

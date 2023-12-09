@@ -2,7 +2,7 @@
 
 namespace Spotify.Domain.Streaming.Aggregates;
 
-public class Music
+public class Musicsss
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

@@ -1,6 +1,6 @@
-﻿using Spotify.Domain.Accounts.Aggregates;
+﻿using Spotify.Domain.Streaming.Aggregates;
 
-namespace Spotify.Domain.Streaming.Aggregates;
+namespace Spotify.Domain.Accounts.Aggregates;
 
 public class Playlist
 {

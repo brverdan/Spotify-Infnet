@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Spotify.Infrastructure\Spotify.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,12 +1,27 @@
-﻿namespace Spotify.Domain.Accounts.ValueObjects;
+﻿using Spotify.Core.Exceptions;
+using Spotify.Domain.Accounts.Exceptions;
+
+namespace Spotify.Domain.Accounts.ValueObjects;
 
 public class CPF
 {
+    private readonly CPFException Validation = new CPFException();
     public CPF() { }
 
     public CPF(string numero)
     {
         Numero = numero;
+
+        if (IsValido() == false)
+        {
+            Validation.AddError(new BusinessValidation()
+            {
+                ErrorMessage = "CPF Inválido",
+                ErrorName = nameof(CPFException)
+            });
+
+            Validation.ValidateAndThrow();
+        }
     }
 
     public string Numero { get; set; }
