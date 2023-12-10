@@ -10,12 +10,12 @@ public class Music
     public DateTime ReleaseYear { get; set; }
     public Duration Duration { get; set; }
 
-    public void Create(string name, DateTime creationYear, int duration)
+    public void Create(string name, DateTime releaseYear, int duration)
     {
         Id = Guid.NewGuid();
         Name = name;
-        ReleaseYear = creationYear;
-        Duration = new Duration { Value = duration };
+        ReleaseYear = releaseYear;
+        Duration = new Duration(duration);
     }
 
     public void BelongsAlbum(Album album)

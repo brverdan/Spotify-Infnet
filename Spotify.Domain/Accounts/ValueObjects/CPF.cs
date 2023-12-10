@@ -16,7 +16,7 @@ public class CPF
         {
             Validation.AddError(new BusinessValidation()
             {
-                ErrorMessage = "CPF Inválido",
+                ErrorMessage = "CPF invalid",
                 ErrorName = nameof(CPFException)
             });
 
