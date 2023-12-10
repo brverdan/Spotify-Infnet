@@ -17,4 +17,9 @@ public class Music
         ReleaseYear = creationYear;
         Duration = new Duration { Value = duration };
     }
+
+    public void BelongsAlbum(Album album)
+    {
+        Album = album;
+    }
 }

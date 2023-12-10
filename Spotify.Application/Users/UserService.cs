@@ -112,4 +112,20 @@ public class UserService : IUserService
 
         return playlist;
     }
+
+    public Playlist GetPlaylistById(Guid id)
+    {
+        var playlist = UserRepository.GetPlaylistById(id);
+
+        if (playlist == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "Playlist not found",
+                ErrorName = nameof(AddMusic)
+            }).ValidateAndThrow();
+        }
+
+        return playlist;
+    }
 }

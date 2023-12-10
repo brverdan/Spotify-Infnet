@@ -12,8 +12,17 @@ public class BandRepository : IBandRepository
         Bands.Add(band);
     }
 
+    public Band GetBandById(Guid id)
+    {
+        return Bands.FirstOrDefault(b => b.Id == id);
+    }
+
     public Music GetMusicById(Guid musicId)
     {
-        return Bands.Select(b => b.Musics.FirstOrDefault(m => m.Id == musicId)).FirstOrDefault();
+        return Bands.Select(b => 
+                            b.Albums.Select(a => 
+                                            a.Musics.FirstOrDefault(m => m.Id == musicId))
+                            .FirstOrDefault())
+            .FirstOrDefault();
     }
 }

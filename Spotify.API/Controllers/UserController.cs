@@ -66,4 +66,17 @@ public class UserController : ControllerBase
 
         return Created("", result);
     }
+
+    [HttpGet("{userId}/playlist/{playlistId}")]
+    public IActionResult GetPlaylistById([FromRoute] Guid playlistId)
+    {
+        var result = UserService.GetPlaylistById(playlistId);
+
+        if (result == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(result);
+    }
 }

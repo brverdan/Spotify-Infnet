@@ -8,11 +8,15 @@ public class Album
     public List<Music> Musics { get; set; }
     public DateTime ReleaseYear { get; set; }
 
-    public void Create(string name, IEnumerable<Music> musics, DateTime releaseYear)
+    public void AddMusics(List<Music> musicsAlbum)
+    {
+        Musics = musicsAlbum;
+    }
+
+    public void Create(string name, DateTime releaseYear)
     {
         Id = Guid.NewGuid();
         Name = name;
-        Musics.AddRange(musics);
         ReleaseYear = releaseYear;
     }
 }

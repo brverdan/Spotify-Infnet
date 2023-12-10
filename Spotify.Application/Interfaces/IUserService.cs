@@ -8,5 +8,6 @@ public interface IUserService
     User GetUserById(Guid id);
     Task<User> CreateUser(CreateUserDto userCreateDto);
     Playlist CreatePlaylist(Guid userId, PlaylistDto playlistDto);
+    Playlist GetPlaylistById(Guid id);
     Task<Playlist> AddMusic(Guid playlistId, Guid musicId);
 }

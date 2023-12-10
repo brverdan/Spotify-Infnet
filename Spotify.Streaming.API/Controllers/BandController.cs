@@ -28,6 +28,19 @@ public class BandController : ControllerBase
         return Created("", result);
     }
 
+    [HttpGet("{bandId}")]
+    public IActionResult GetBandById([FromRoute] Guid bandId)
+    {
+        var band = BandService.GetBandById(bandId);
+
+        if (band == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(band);
+    }
+
     [HttpGet("music/{musicId}")]
     public IActionResult GetMusicById([FromRoute] Guid musicId)
     {

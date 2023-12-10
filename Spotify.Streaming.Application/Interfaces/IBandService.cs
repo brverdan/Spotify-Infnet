@@ -1,10 +1,11 @@
 ﻿using Spotify.Streaming.Application.Bands.Dtos;
-using Spotify.Streaming.Domain.Streaming.Aggregates;
+using Spotify.Streaming.Application.Bands.Dtos.Response;
 
 namespace Spotify.Streaming.Application.Interfaces;
 
 public interface IBandService
 {
-    Band CreateBand(CreateBandDto createBandDto);
-    Music GetMusicById(Guid id);
+    ResponseBandDto CreateBand(CreateBandDto createBandDto);
+    ResponseBandDto GetBandById(Guid id);
+    ResponseMusicDto GetMusicById(Guid id);
 }
