@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Spotify.API\Spotify.API.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Services\" />
+  </ItemGroup>
+
 </Project>
