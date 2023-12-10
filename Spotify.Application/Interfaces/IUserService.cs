@@ -10,4 +10,5 @@ public interface IUserService
     Playlist CreatePlaylist(Guid userId, PlaylistDto playlistDto);
     Playlist GetPlaylistById(Guid id);
     Task<Playlist> AddMusic(Guid playlistId, Guid musicId);
+    Task<User> AddFavoriteMusic(Guid userId, Guid musicId);
 }

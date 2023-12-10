@@ -19,7 +19,7 @@ public class UserController : ControllerBase
     public IActionResult GetUserById([FromRoute] Guid id)
     {
         var user = UserService.GetUserById(id);
-        
+
         if (user == null)
         {
             return NotFound();
@@ -31,7 +31,7 @@ public class UserController : ControllerBase
     [HttpPost("createUser")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userCreateDto)
     {
-        if(!ModelState.IsValid) 
+        if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
@@ -78,5 +78,18 @@ public class UserController : ControllerBase
         }
 
         return Ok(result);
+    }
+
+    [HttpPost("{userId}/favorite/AddMusic")]
+    public async Task<IActionResult> AddFavoriteMusic([FromRoute] Guid userId, [FromBody] AddMusicDto addMusicDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await UserService.AddFavoriteMusic(userId, addMusicDto.MusicId);
+
+        return Created("", result);
     }
 }

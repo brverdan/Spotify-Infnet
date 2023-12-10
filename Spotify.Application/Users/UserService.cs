@@ -122,10 +122,39 @@ public class UserService : IUserService
             new BusinessException(new BusinessValidation
             {
                 ErrorMessage = "Playlist not found",
-                ErrorName = nameof(AddMusic)
+                ErrorName = nameof(GetPlaylistById)
             }).ValidateAndThrow();
         }
 
         return playlist;
+    }
+
+    public async Task<User> AddFavoriteMusic(Guid userId, Guid musicId)
+    {
+        var user = UserRepository.GetUserById(userId);
+
+        if (user == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "User not found",
+                ErrorName = nameof(AddFavoriteMusic)
+            }).ValidateAndThrow();
+        }
+        
+        var music = await BandRepository.GetMusicById(musicId);
+
+        if (music == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "Music not found",
+                ErrorName = nameof(AddMusic)
+            }).ValidateAndThrow();
+        }
+
+        user.AddFavoriteMusic(music);
+
+        return user;
     }
 }

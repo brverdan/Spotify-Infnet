@@ -1,4 +1,5 @@
 ﻿using Spotify.Domain.Accounts.ValueObjects;
+using Spotify.Domain.Aggregates;
 using Spotify.Domain.Streaming.Aggregates;
 
 namespace Spotify.Domain.Accounts.Aggregates;
@@ -12,12 +13,14 @@ public class User
     public List<CreditCard> CreditCards { get; set; }
     public List<Playlist> Playlists { get; set; }
     public List<Subscription> Subscriptions { get; set; }
+    public List<Favorite> Favorites { get; set; }
 
     public User()
     {
         CreditCards = new List<CreditCard>();
         Playlists = new List<Playlist>();
         Subscriptions = new List<Subscription>();
+        Favorites = new List<Favorite>();
     }
 
     public void Create(string nome, string email, string cpf, CreditCard card, Plan plan)
@@ -53,5 +56,18 @@ public class User
     private void AddCreditCard(CreditCard card)
     {
         CreditCards.Add(card);
+    }
+
+    public void AddFavoriteMusic(Music music)
+    {
+        var favorite = new Favorite
+        {
+            Id = Guid.NewGuid(),
+            IdFavorite = music.Id,
+            Name = music.Name,
+            CategoryType = Category.Music
+        };
+
+        Favorites.Add(favorite);
     }
 }
