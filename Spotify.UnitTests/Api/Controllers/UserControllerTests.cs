@@ -32,10 +32,10 @@ public class UserControllerTests
 
         userService.Setup(x => x.GetUserById(It.IsAny<Guid>())).Returns(userExpected);
 
-        var instancia = new UserController(userService.Object);
+        var instance = new UserController(userService.Object);
 
         // Act
-        var result = instancia.GetUserById(Guid.NewGuid());
+        var result = instance.GetUserById(Guid.NewGuid());
 
         // Assert
         result.Should().BeOfType<OkObjectResult>();
@@ -52,10 +52,10 @@ public class UserControllerTests
 
         userService.Setup(x => x.GetUserById(It.IsAny<Guid>()));
 
-        var instancia = new UserController(userService.Object);
+        var instance = new UserController(userService.Object);
 
         // Act
-        var result = instancia.GetUserById(Guid.NewGuid());
+        var result = instance.GetUserById(Guid.NewGuid());
 
         // Assert
         result.Should().BeOfType<NotFoundResult>();
@@ -96,10 +96,10 @@ public class UserControllerTests
 
         userService.Setup(x => x.CreateUser(createUserDto)).ReturnsAsync(userExpected);
 
-        var instancia = new UserController(userService.Object);
+        var instance = new UserController(userService.Object);
 
         // Act
-        var result = await instancia.CreateUser(createUserDto);
+        var result = await instance.CreateUser(createUserDto);
 
         // Assert
         result.Should().BeOfType<CreatedResult>();

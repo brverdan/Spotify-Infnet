@@ -23,7 +23,18 @@ public class UserService : IUserService
 
     public User GetUserById(Guid id)
     {
-        return UserRepository.GetUserById(id);
+        var user = UserRepository.GetUserById(id);
+
+        if (user == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "User not found",
+                ErrorName = nameof(GetUserById)
+            }).ValidateAndThrow();
+        }
+
+        return user;
     }
 
     public async Task<User> CreateUser(CreateUserDto createUserDto)

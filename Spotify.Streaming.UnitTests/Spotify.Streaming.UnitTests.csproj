@@ -25,11 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Spotify.API\Spotify.API.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Repository\" />
+    <ProjectReference Include="..\Spotify.Streaming.API\Spotify.Streaming.API.csproj" />
   </ItemGroup>
 
 </Project>

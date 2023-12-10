@@ -7,7 +7,7 @@ namespace Spotify.Domain.Accounts.Aggregates;
 public class CreditCard
 {
     private const int TRANSACTION_TIME_INTERVAL = -5;
-    private const int TRANSACTION_MERCHANT_REPEAT = 2;
+    private const int TRANSACTION_DESCRIPTION_REPEAT = 1;
 
     public Guid Id { get; set; }
     public string Number { get; set; }
@@ -17,6 +17,11 @@ public class CreditCard
     public int SecureCode { get; set; }
     public bool ActiveCard { get; set; }
     public List<Transaction> Transactions { get; set; }
+
+    public CreditCard()
+    {
+        Transactions = new List<Transaction>();
+    }
 
     public void CreateCard(string number, double availableLimit, bool activeCard, int secureCode, string username)
     {
@@ -65,7 +70,7 @@ public class CreditCard
         }
 
         if (lastTransactions?.Where(t => t.Description.ToLower() == transaction.Description.ToLower()
-                                    && t.Amount == transaction.Amount).Count() == TRANSACTION_MERCHANT_REPEAT)
+                                    && t.Amount == transaction.Amount).Count() == TRANSACTION_DESCRIPTION_REPEAT)
         {
             errors.AddError(new BusinessValidation
             {
@@ -81,7 +86,7 @@ public class CreditCard
         {
             errors.AddError(new BusinessValidation
             {
-                ErrorMessage = "Not available limit",
+                ErrorMessage = "Not limit available",
                 ErrorName = nameof(CardException),
             });
         }

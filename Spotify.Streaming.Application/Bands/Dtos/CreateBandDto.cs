@@ -9,5 +9,4 @@ public class CreateBandDto
     public string Name { get; set; }
 
     public List<CreateAlbumDto>? Albums { get; set; }
-    public List<CreateMusicDto>? Musics { get; set; }
 }
