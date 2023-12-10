@@ -19,15 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{7FFA025C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Streaming", "Streaming", "{D0623888-1D5B-464E-9702-59BDA7DE887A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify.Streaming.Application", "Spotify.Streaming.Application\Spotify.Streaming.Application.csproj", "{24A3787A-3D6E-48D6-8E15-39009BD0CD3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify.Streaming.Application", "Spotify.Streaming.Application\Spotify.Streaming.Application.csproj", "{24A3787A-3D6E-48D6-8E15-39009BD0CD3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify.Streaming.Domain", "Spotify.Streaming.Domain\Spotify.Streaming.Domain.csproj", "{409F3BB0-70C9-41FF-AE6A-F59A37E98DC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify.Streaming.Domain", "Spotify.Streaming.Domain\Spotify.Streaming.Domain.csproj", "{409F3BB0-70C9-41FF-AE6A-F59A37E98DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify.Streaming.Infrastructure", "Spotify.Streaming.Infrastructure\Spotify.Streaming.Infrastructure.csproj", "{14881B45-4018-4962-BF68-49CDDF2FC27F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify.Streaming.Infrastructure", "Spotify.Streaming.Infrastructure\Spotify.Streaming.Infrastructure.csproj", "{14881B45-4018-4962-BF68-49CDDF2FC27F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify.Streaming.IoC", "Spotify.Streaming.IoC\Spotify.Streaming.IoC.csproj", "{D83817CB-0379-40A4-8D7C-25A5EEFDBD7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify.Streaming.IoC", "Spotify.Streaming.IoC\Spotify.Streaming.IoC.csproj", "{D83817CB-0379-40A4-8D7C-25A5EEFDBD7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify.Streaming.API", "Spotify.Streaming.API\Spotify.Streaming.API.csproj", "{9987A316-1484-4140-BA22-0F0BE0028FEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotify.Streaming.API", "Spotify.Streaming.API\Spotify.Streaming.API.csproj", "{9987A316-1484-4140-BA22-0F0BE0028FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotify.UnitTests", "Spotify.UnitTests\Spotify.UnitTests.csproj", "{659F823C-A705-4EBE-89C6-02CCFC223692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{9987A316-1484-4140-BA22-0F0BE0028FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9987A316-1484-4140-BA22-0F0BE0028FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9987A316-1484-4140-BA22-0F0BE0028FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{659F823C-A705-4EBE-89C6-02CCFC223692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659F823C-A705-4EBE-89C6-02CCFC223692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659F823C-A705-4EBE-89C6-02CCFC223692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659F823C-A705-4EBE-89C6-02CCFC223692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{14881B45-4018-4962-BF68-49CDDF2FC27F} = {D0623888-1D5B-464E-9702-59BDA7DE887A}
 		{D83817CB-0379-40A4-8D7C-25A5EEFDBD7B} = {D0623888-1D5B-464E-9702-59BDA7DE887A}
 		{9987A316-1484-4140-BA22-0F0BE0028FEB} = {D0623888-1D5B-464E-9702-59BDA7DE887A}
+		{659F823C-A705-4EBE-89C6-02CCFC223692} = {7FFA025C-0073-4E49-AB9F-72A7DAC3CD56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F613BA66-828C-4DF4-A290-BFD6718D8CBC}
