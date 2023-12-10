@@ -6,6 +6,7 @@ namespace Spotify.Application.Interfaces;
 public interface IUserService
 {
     User GetUserById(Guid id);
-    User CreateUser(CreateUserDto userCreateDto);
+    Task<User> CreateUser(CreateUserDto userCreateDto);
     Playlist CreatePlaylist(Guid userId, PlaylistDto playlistDto);
+    Task<Playlist> AddMusic(Guid playlistId, Guid musicId);
 }

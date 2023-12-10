@@ -22,4 +22,9 @@ public class UserRepository : IUserRepository
         var user = Users.FirstOrDefault(u => u.Id == userId);
         user.Playlists.Add(playlist);
     }
+
+    public Playlist GetPlaylistById(Guid playlistId)
+    {
+        return Users.Select(u => u.Playlists.FirstOrDefault(p => p.Id == playlistId)).FirstOrDefault();
+    }
 }

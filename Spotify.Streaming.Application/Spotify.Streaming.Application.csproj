@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Spotify.Core\Spotify.Core.csproj" />
+    <ProjectReference Include="..\Spotify.Streaming.Domain\Spotify.Streaming.Domain.csproj" />
+    <ProjectReference Include="..\Spotify.Streaming.Infrastructure\Spotify.Streaming.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

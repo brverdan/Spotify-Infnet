@@ -29,19 +29,19 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("createUser")]
-    public IActionResult CreateUser([FromBody] CreateUserDto userCreateDto)
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userCreateDto)
     {
         if(!ModelState.IsValid) 
         {
             return BadRequest(ModelState);
         }
 
-        var result = UserService.CreateUser(userCreateDto);
+        var result = await UserService.CreateUser(userCreateDto);
 
         return Created("", result);
     }
 
-    [HttpPost("{id}/createplaylist")]
+    [HttpPost("{id}/playlist/create")]
     public IActionResult CreatePlaylist([FromRoute] Guid id, [FromBody] PlaylistDto playlistDto)
     {
         if (!ModelState.IsValid)
@@ -50,6 +50,19 @@ public class UserController : ControllerBase
         }
 
         var result = UserService.CreatePlaylist(id, playlistDto);
+
+        return Created("", result);
+    }
+
+    [HttpPost("{userId}/playlist/{playlistId}/addMusic")]
+    public async Task<IActionResult> AddMusic([FromRoute] Guid playlistId, [FromBody] AddMusicDto addMusicDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await UserService.AddMusic(playlistId, addMusicDto.MusicId);
 
         return Created("", result);
     }

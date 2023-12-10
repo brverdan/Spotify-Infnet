@@ -7,4 +7,5 @@ public interface IUserRepository
     User GetUserById(Guid id);
     void CreateUser(User user);
     void CreatePlaylist(Guid userId, Playlist playlist);
+    Playlist GetPlaylistById(Guid playlistId);
 }

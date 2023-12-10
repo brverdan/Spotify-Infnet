@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Diagnostics;
-using Spotify.API.ErrorHandling;
-using Spotify.IoC.Repository;
-using Spotify.IoC.Service;
-using static Spotify.API.ErrorHandling.ErrorHandling;
-using System.Net;
 using Spotify.Core.Exceptions;
+using Spotify.Streaming.API.ErrorHandling;
+using Spotify.Streaming.IoC.Repository;
+using Spotify.Streaming.IoC.Service;
+using System.Net;
+using static Spotify.Streaming.API.ErrorHandling.ErrorHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +16,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServices();
 builder.Services.AddRepositories();
-
-builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

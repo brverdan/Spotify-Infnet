@@ -1,32 +1,26 @@
-﻿using Spotify.Domain.Streaming.Aggregates;
+﻿using Newtonsoft.Json;
+using Spotify.Domain.Streaming.Aggregates;
 using Spotify.Infrastructure.Interfaces;
 
 namespace Spotify.Infrastructure.Repository;
 public class PlanRepository : IPlanRepository
 {
-    private static List<Plan> Plans = new();
+    private readonly HttpClient HttpClient;
 
     public PlanRepository()
     {
-        CreatePlans();
+        HttpClient = new HttpClient();
     }
 
-    public Plan GetPlanById(Guid id)
+    public async Task<Plan> GetPlanById(Guid id)
     {
-        return Plans.FirstOrDefault(u => u.Id == id);
-    }
+        var result = await HttpClient.GetAsync($"https://localhost:7027/api/plan/{id}");
 
-    public void CreatePlans()
-    {
-        if (Plans.Count == 0)
-        {
-            Plans.Add(new Plan
-            {
-                Id = new Guid("AA412963-68AA-4A7D-B1DC-5260E6C55A94"),
-                Name = "Basic",
-                Description = "Basic plan",
-                Value = 50.0
-            });
-        }
+        if (result.IsSuccessStatusCode == false)
+            return null;
+
+        var content = await result.Content.ReadAsStringAsync();
+
+        return JsonConvert.DeserializeObject<Plan>(content);
     }
 }

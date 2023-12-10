@@ -1,4 +1,4 @@
-﻿using Spotify.Domain.Streaming.Aggregates;
+﻿using Spotify.Domain.Aggregates;
 
 namespace Spotify.Domain.Accounts.Aggregates;
 
@@ -21,5 +21,10 @@ public class Playlist
         Name = name;
         Public = visibility;
         CreatedAt = DateTime.Now;
+    }
+
+    public void AddMusic(Music music)
+    {
+        Musics.Add(music);
     }
 }

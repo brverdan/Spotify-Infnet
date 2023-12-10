@@ -3,5 +3,5 @@
 namespace Spotify.Infrastructure.Interfaces;
 public interface IPlanRepository
 {
-    Plan GetPlanById(Guid id);
+    Task<Plan> GetPlanById(Guid id);
 }

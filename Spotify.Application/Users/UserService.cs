@@ -8,14 +8,17 @@ namespace Spotify.Application.Users;
 
 public class UserService : IUserService
 {
-    public IUserRepository UserRepository { get; set; }
-    public IPlanRepository PlanRepository { get; set; }
+    private IUserRepository UserRepository { get; set; }
+    private IPlanRepository PlanRepository { get; set; }
+    private IBandRepository BandRepository { get; set; }
 
     public UserService(IUserRepository userRepository,
-                       IPlanRepository planRepository)
+                       IPlanRepository planRepository,
+                       IBandRepository bandRepository)
     {
         UserRepository = userRepository;
         PlanRepository = planRepository;
+        BandRepository = bandRepository;
     }
 
     public User GetUserById(Guid id)
@@ -23,9 +26,9 @@ public class UserService : IUserService
         return UserRepository.GetUserById(id);
     }
 
-    public User CreateUser(CreateUserDto createUserDto)
+    public async Task<User> CreateUser(CreateUserDto createUserDto)
     {
-        var plan = PlanRepository.GetPlanById(createUserDto.Plan);
+        var plan = await PlanRepository.GetPlanById(createUserDto.Plan);
 
         if (plan == null)
         {
@@ -77,6 +80,35 @@ public class UserService : IUserService
         playlist.CreatePlaylist(playlistDto.Name, playlistDto.Visibility);
 
         UserRepository.CreatePlaylist(user.Id, playlist);
+
+        return playlist;
+    }
+
+    public async Task<Playlist> AddMusic(Guid playlistId, Guid musicId)
+    {
+        var playlist = UserRepository.GetPlaylistById(playlistId);
+
+        if (playlist == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "Playlist not found",
+                ErrorName = nameof(AddMusic)
+            }).ValidateAndThrow();
+        }
+
+        var music = await BandRepository.GetMusicById(musicId);
+
+        if (music == null)
+        {
+            new BusinessException(new BusinessValidation
+            {
+                ErrorMessage = "Music not found",
+                ErrorName = nameof(AddMusic)
+            }).ValidateAndThrow();
+        }
+
+        playlist.AddMusic(music);
 
         return playlist;
     }
